@@ -1,0 +1,60 @@
+table_set_default mapinit_10016_1 do_mapinit_10016_1
+table_set_default map_10016_2 do_map_10016_2
+table_set_default filter_10016_3 drop_10016
+table_add filter_10016_3 _nop 6 => 
+table_set_default filter_10016_4 drop_10016
+table_add filter_10016_4 _nop 2 => 
+table_set_default map_10016_5 do_map_10016_5
+table_set_default add_out_header_10016 do_add_out_header_10016
+table_set_default mark_satisfied_10016 do_mark_satisfied_10016
+table_set_default mapinit_20032_1 do_mapinit_20032_1
+table_set_default filter_20032_2 drop_20032
+table_set_default map_20032_3 do_map_20032_3
+table_set_default filter_20032_4 drop_20032
+table_add filter_20032_4 _nop 6 => 
+table_set_default filter_20032_5 drop_20032
+table_add filter_20032_5 _nop 17 => 
+table_set_default map_20032_6 do_map_20032_6
+table_set_default add_out_header_20032 do_add_out_header_20032
+table_set_default mark_satisfied_20032 do_mark_satisfied_20032
+table_set_default mapinit_30032_1 do_mapinit_30032_1
+table_set_default filter_30032_2 drop_30032
+table_set_default map_30032_3 do_map_30032_3
+table_set_default filter_30032_4 drop_30032
+table_add filter_30032_4 _nop 6 => 
+table_set_default filter_30032_5 drop_30032
+table_add filter_30032_5 _nop 16 => 
+table_set_default map_30032_6 do_map_30032_6
+table_set_default add_out_header_30032 do_add_out_header_30032
+table_set_default mark_satisfied_30032 do_mark_satisfied_30032
+table_set_default mapinit_30016_1 do_mapinit_30016_1
+table_set_default map_30016_2 do_map_30016_2
+table_set_default filter_30016_3 drop_30016
+table_add filter_30016_3 _nop 6 => 
+table_set_default filter_30016_4 drop_30016
+table_add filter_30016_4 _nop 16 => 
+table_set_default map_30016_5 do_map_30016_5
+table_set_default add_out_header_30016 do_add_out_header_30016
+table_set_default mark_satisfied_30016 do_mark_satisfied_30016
+table_set_default mapinit_20016_1 do_mapinit_20016_1
+table_set_default map_20016_2 do_map_20016_2
+table_set_default filter_20016_3 drop_20016
+table_add filter_20016_3 _nop 6 => 
+table_set_default filter_20016_4 drop_20016
+table_add filter_20016_4 _nop 17 => 
+table_set_default map_20016_5 do_map_20016_5
+table_set_default add_out_header_20016 do_add_out_header_20016
+table_set_default mark_satisfied_20016 do_mark_satisfied_20016
+table_set_default mapinit_10032_1 do_mapinit_10032_1
+table_set_default filter_10032_2 drop_10032
+table_set_default map_10032_3 do_map_10032_3
+table_set_default filter_10032_4 drop_10032
+table_add filter_10032_4 _nop 6 => 
+table_set_default filter_10032_5 drop_10032
+table_add filter_10032_5 _nop 2 => 
+table_set_default map_10032_6 do_map_10032_6
+table_set_default add_out_header_10032 do_add_out_header_10032
+table_set_default mark_satisfied_10032 do_mark_satisfied_10032
+table_set_default report_packet do_report_packet
+table_set_default add_final_header do_add_final_header
+mirroring_add 8001 12

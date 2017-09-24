@@ -1,0 +1,3217 @@
+{
+    "__meta__": {
+        "version": [
+            2,
+            5
+        ],
+        "compiler": "https://github.com/p4lang/p4c-bm"
+    },
+    "header_types": [
+        {
+            "name": "standard_metadata_t",
+            "id": 0,
+            "fields": [
+                [
+                    "ingress_port",
+                    9
+                ],
+                [
+                    "packet_length",
+                    32
+                ],
+                [
+                    "egress_spec",
+                    9
+                ],
+                [
+                    "egress_port",
+                    9
+                ],
+                [
+                    "egress_instance",
+                    32
+                ],
+                [
+                    "instance_type",
+                    32
+                ],
+                [
+                    "clone_spec",
+                    32
+                ],
+                [
+                    "_padding",
+                    5
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "tcp_t",
+            "id": 1,
+            "fields": [
+                [
+                    "sport",
+                    16
+                ],
+                [
+                    "dport",
+                    16
+                ],
+                [
+                    "seqNo",
+                    32
+                ],
+                [
+                    "ackNo",
+                    32
+                ],
+                [
+                    "dataOffset",
+                    4
+                ],
+                [
+                    "res",
+                    4
+                ],
+                [
+                    "flags",
+                    8
+                ],
+                [
+                    "window",
+                    16
+                ],
+                [
+                    "checksum",
+                    16
+                ],
+                [
+                    "urgentPtr",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "ipv4_t",
+            "id": 2,
+            "fields": [
+                [
+                    "version",
+                    4
+                ],
+                [
+                    "ihl",
+                    4
+                ],
+                [
+                    "diffserv",
+                    8
+                ],
+                [
+                    "totalLen",
+                    16
+                ],
+                [
+                    "identification",
+                    16
+                ],
+                [
+                    "flags",
+                    3
+                ],
+                [
+                    "fragOffset",
+                    13
+                ],
+                [
+                    "ttl",
+                    8
+                ],
+                [
+                    "protocol",
+                    8
+                ],
+                [
+                    "hdrChecksum",
+                    16
+                ],
+                [
+                    "srcIP",
+                    32
+                ],
+                [
+                    "dstIP",
+                    32
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "ethernet_t",
+            "id": 3,
+            "fields": [
+                [
+                    "dstMac",
+                    48
+                ],
+                [
+                    "srcMac",
+                    48
+                ],
+                [
+                    "ethType",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "meta_app_data_t",
+            "id": 4,
+            "fields": [
+                [
+                    "drop_10008",
+                    1
+                ],
+                [
+                    "satisfied_10008",
+                    1
+                ],
+                [
+                    "drop_10032",
+                    1
+                ],
+                [
+                    "satisfied_10032",
+                    1
+                ],
+                [
+                    "clone",
+                    1
+                ],
+                [
+                    "_padding",
+                    3
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "final_header_t",
+            "id": 5,
+            "fields": [
+                [
+                    "delimiter",
+                    32
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "out_header_10008_t",
+            "id": 6,
+            "fields": [
+                [
+                    "qid",
+                    16
+                ],
+                [
+                    "ipv4_srcIP",
+                    32
+                ],
+                [
+                    "index",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "meta_mapinit_10008_1_t",
+            "id": 7,
+            "fields": [
+                [
+                    "qid",
+                    16
+                ],
+                [
+                    "count",
+                    16
+                ],
+                [
+                    "tcp_dport",
+                    16
+                ],
+                [
+                    "ipv4_srcIP",
+                    32
+                ],
+                [
+                    "index",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "meta_distinct_10008_4_t",
+            "id": 8,
+            "fields": [
+                [
+                    "value",
+                    32
+                ],
+                [
+                    "index",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "meta_reduce_10008_6_t",
+            "id": 9,
+            "fields": [
+                [
+                    "value",
+                    32
+                ],
+                [
+                    "index",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "out_header_10032_t",
+            "id": 10,
+            "fields": [
+                [
+                    "qid",
+                    16
+                ],
+                [
+                    "ipv4_srcIP",
+                    32
+                ],
+                [
+                    "index",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "meta_mapinit_10032_1_t",
+            "id": 11,
+            "fields": [
+                [
+                    "qid",
+                    16
+                ],
+                [
+                    "count",
+                    16
+                ],
+                [
+                    "tcp_dport",
+                    16
+                ],
+                [
+                    "ipv4_srcIP",
+                    32
+                ],
+                [
+                    "index",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "meta_distinct_10032_5_t",
+            "id": 12,
+            "fields": [
+                [
+                    "value",
+                    32
+                ],
+                [
+                    "index",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        },
+        {
+            "name": "meta_reduce_10032_7_t",
+            "id": 13,
+            "fields": [
+                [
+                    "value",
+                    32
+                ],
+                [
+                    "index",
+                    16
+                ]
+            ],
+            "length_exp": null,
+            "max_length": null
+        }
+    ],
+    "headers": [
+        {
+            "name": "standard_metadata",
+            "id": 0,
+            "header_type": "standard_metadata_t",
+            "metadata": true
+        },
+        {
+            "name": "tcp",
+            "id": 1,
+            "header_type": "tcp_t",
+            "metadata": false
+        },
+        {
+            "name": "ipv4",
+            "id": 2,
+            "header_type": "ipv4_t",
+            "metadata": false
+        },
+        {
+            "name": "ethernet",
+            "id": 3,
+            "header_type": "ethernet_t",
+            "metadata": false
+        },
+        {
+            "name": "meta_app_data",
+            "id": 4,
+            "header_type": "meta_app_data_t",
+            "metadata": true
+        },
+        {
+            "name": "final_header",
+            "id": 5,
+            "header_type": "final_header_t",
+            "metadata": false
+        },
+        {
+            "name": "out_header_10008",
+            "id": 6,
+            "header_type": "out_header_10008_t",
+            "metadata": false
+        },
+        {
+            "name": "meta_mapinit_10008_1",
+            "id": 7,
+            "header_type": "meta_mapinit_10008_1_t",
+            "metadata": true
+        },
+        {
+            "name": "meta_distinct_10008_4",
+            "id": 8,
+            "header_type": "meta_distinct_10008_4_t",
+            "metadata": true
+        },
+        {
+            "name": "meta_reduce_10008_6",
+            "id": 9,
+            "header_type": "meta_reduce_10008_6_t",
+            "metadata": true
+        },
+        {
+            "name": "out_header_10032",
+            "id": 10,
+            "header_type": "out_header_10032_t",
+            "metadata": false
+        },
+        {
+            "name": "meta_mapinit_10032_1",
+            "id": 11,
+            "header_type": "meta_mapinit_10032_1_t",
+            "metadata": true
+        },
+        {
+            "name": "meta_distinct_10032_5",
+            "id": 12,
+            "header_type": "meta_distinct_10032_5_t",
+            "metadata": true
+        },
+        {
+            "name": "meta_reduce_10032_7",
+            "id": 13,
+            "header_type": "meta_reduce_10032_7_t",
+            "metadata": true
+        }
+    ],
+    "header_stacks": [],
+    "parsers": [
+        {
+            "name": "parser",
+            "id": 0,
+            "init_state": "start",
+            "parse_states": [
+                {
+                    "name": "start",
+                    "id": 0,
+                    "parser_ops": [],
+                    "transition_key": [
+                        {
+                            "type": "lookahead",
+                            "value": [
+                                0,
+                                64
+                            ]
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "type": "hexstr",
+                            "value": "0x0000000000000000",
+                            "mask": null,
+                            "next_state": "parse_out_header"
+                        },
+                        {
+                            "type": "default",
+                            "value": null,
+                            "mask": null,
+                            "next_state": "parse_ethernet"
+                        }
+                    ]
+                },
+                {
+                    "name": "parse_out_header",
+                    "id": 1,
+                    "parser_ops": [
+                        {
+                            "op": "extract",
+                            "parameters": [
+                                {
+                                    "type": "regular",
+                                    "value": "out_header_10008"
+                                }
+                            ]
+                        },
+                        {
+                            "op": "extract",
+                            "parameters": [
+                                {
+                                    "type": "regular",
+                                    "value": "out_header_10032"
+                                }
+                            ]
+                        },
+                        {
+                            "op": "extract",
+                            "parameters": [
+                                {
+                                    "type": "regular",
+                                    "value": "final_header"
+                                }
+                            ]
+                        }
+                    ],
+                    "transition_key": [],
+                    "transitions": [
+                        {
+                            "type": "default",
+                            "value": null,
+                            "mask": null,
+                            "next_state": "parse_ethernet"
+                        }
+                    ]
+                },
+                {
+                    "name": "parse_ethernet",
+                    "id": 2,
+                    "parser_ops": [
+                        {
+                            "op": "extract",
+                            "parameters": [
+                                {
+                                    "type": "regular",
+                                    "value": "ethernet"
+                                }
+                            ]
+                        }
+                    ],
+                    "transition_key": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "ethernet",
+                                "ethType"
+                            ]
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "type": "hexstr",
+                            "value": "0x0800",
+                            "mask": null,
+                            "next_state": "parse_ipv4"
+                        },
+                        {
+                            "type": "default",
+                            "value": null,
+                            "mask": null,
+                            "next_state": null
+                        }
+                    ]
+                },
+                {
+                    "name": "parse_ipv4",
+                    "id": 3,
+                    "parser_ops": [
+                        {
+                            "op": "extract",
+                            "parameters": [
+                                {
+                                    "type": "regular",
+                                    "value": "ipv4"
+                                }
+                            ]
+                        }
+                    ],
+                    "transition_key": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "ipv4",
+                                "protocol"
+                            ]
+                        }
+                    ],
+                    "transitions": [
+                        {
+                            "type": "hexstr",
+                            "value": "0x06",
+                            "mask": null,
+                            "next_state": "parse_tcp"
+                        },
+                        {
+                            "type": "default",
+                            "value": null,
+                            "mask": null,
+                            "next_state": null
+                        }
+                    ]
+                },
+                {
+                    "name": "parse_tcp",
+                    "id": 4,
+                    "parser_ops": [
+                        {
+                            "op": "extract",
+                            "parameters": [
+                                {
+                                    "type": "regular",
+                                    "value": "tcp"
+                                }
+                            ]
+                        }
+                    ],
+                    "transition_key": [],
+                    "transitions": [
+                        {
+                            "type": "default",
+                            "value": null,
+                            "mask": null,
+                            "next_state": null
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "parse_vsets": [],
+    "deparsers": [
+        {
+            "name": "deparser",
+            "id": 0,
+            "order": [
+                "out_header_10008",
+                "out_header_10032",
+                "final_header",
+                "ethernet",
+                "ipv4",
+                "tcp"
+            ]
+        }
+    ],
+    "meter_arrays": [],
+    "actions": [
+        {
+            "name": "do_map_10008_5",
+            "id": 0,
+            "runtime_data": [],
+            "primitives": []
+        },
+        {
+            "name": "do_map_10032_6",
+            "id": 1,
+            "runtime_data": [],
+            "primitives": []
+        },
+        {
+            "name": "do_map_10032_3",
+            "id": 2,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "bit_and",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "ipv4_srcIP"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "ipv4_srcIP"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0xffffffff"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_mapinit_10008_1",
+            "id": 3,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "qid"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x2718"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "count"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "tcp_dport"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "tcp",
+                                "dport"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "ipv4_srcIP"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "ipv4",
+                                "srcIP"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_mapinit_10032_1",
+            "id": 4,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "qid"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x2730"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "count"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "tcp_dport"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "tcp",
+                                "dport"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "ipv4_srcIP"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "ipv4",
+                                "srcIP"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_init_app_metadata",
+            "id": 5,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "drop_10008"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "satisfied_10008"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "drop_10032"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "satisfied_10032"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "clone"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_init_reduce_10008_6",
+            "id": 6,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field_with_hash_based_offset",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10008_6",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        },
+                        {
+                            "type": "calculation",
+                            "value": "hash_reduce_10008_6"
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x10000"
+                        }
+                    ]
+                },
+                {
+                    "op": "register_read",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10008_6",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "register_array",
+                            "value": "reduce_10008_6"
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10008_6",
+                                "index"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10008_6",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "expression",
+                            "value": {
+                                "type": "expression",
+                                "value": {
+                                    "op": "+",
+                                    "left": {
+                                        "type": "field",
+                                        "value": [
+                                            "meta_reduce_10008_6",
+                                            "value"
+                                        ]
+                                    },
+                                    "right": {
+                                        "type": "hexstr",
+                                        "value": "0x1"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "op": "register_write",
+                    "parameters": [
+                        {
+                            "type": "register_array",
+                            "value": "reduce_10008_6"
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10008_6",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10008_6",
+                                "value"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "set_count_reduce_10008_6",
+            "id": 7,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10008_6",
+                                "index"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_init_reduce_10032_7",
+            "id": 8,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field_with_hash_based_offset",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10032_7",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        },
+                        {
+                            "type": "calculation",
+                            "value": "hash_reduce_10032_7"
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x10000"
+                        }
+                    ]
+                },
+                {
+                    "op": "register_read",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10032_7",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "register_array",
+                            "value": "reduce_10032_7"
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10032_7",
+                                "index"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10032_7",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "expression",
+                            "value": {
+                                "type": "expression",
+                                "value": {
+                                    "op": "+",
+                                    "left": {
+                                        "type": "field",
+                                        "value": [
+                                            "meta_reduce_10032_7",
+                                            "value"
+                                        ]
+                                    },
+                                    "right": {
+                                        "type": "hexstr",
+                                        "value": "0x1"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "op": "register_write",
+                    "parameters": [
+                        {
+                            "type": "register_array",
+                            "value": "reduce_10032_7"
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10032_7",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10032_7",
+                                "value"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_map_10008_3",
+            "id": 9,
+            "runtime_data": [],
+            "primitives": []
+        },
+        {
+            "name": "do_map_10008_2",
+            "id": 10,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "bit_and",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "ipv4_srcIP"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "ipv4_srcIP"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0xff000000"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "_nop",
+            "id": 11,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "no_op",
+                    "parameters": []
+                }
+            ]
+        },
+        {
+            "name": "do_map_10032_4",
+            "id": 12,
+            "runtime_data": [],
+            "primitives": []
+        },
+        {
+            "name": "drop_10032",
+            "id": 13,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "drop_10032"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_add_final_header",
+            "id": 14,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "add_header",
+                    "parameters": [
+                        {
+                            "type": "header",
+                            "value": "final_header"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "final_header",
+                                "delimiter"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_init_distinct_10008_4",
+            "id": 15,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field_with_hash_based_offset",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10008_4",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        },
+                        {
+                            "type": "calculation",
+                            "value": "hash_distinct_10008_4"
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x10000"
+                        }
+                    ]
+                },
+                {
+                    "op": "register_read",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10008_4",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "register_array",
+                            "value": "distinct_10008_4"
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10008_4",
+                                "index"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_update_distinct_10008_4",
+            "id": 16,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "bit_or",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10008_4",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10008_4",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                },
+                {
+                    "op": "register_write",
+                    "parameters": [
+                        {
+                            "type": "register_array",
+                            "value": "distinct_10008_4"
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10008_4",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10008_4",
+                                "value"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_init_distinct_10032_5",
+            "id": 17,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field_with_hash_based_offset",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10032_5",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x0"
+                        },
+                        {
+                            "type": "calculation",
+                            "value": "hash_distinct_10032_5"
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x10000"
+                        }
+                    ]
+                },
+                {
+                    "op": "register_read",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10032_5",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "register_array",
+                            "value": "distinct_10032_5"
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10032_5",
+                                "index"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_report_packet",
+            "id": 18,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "clone_ingress_pkt_to_egress",
+                    "parameters": [
+                        {
+                            "type": "hexstr",
+                            "value": "0x1f41"
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_update_distinct_10032_5",
+            "id": 19,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "bit_or",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10032_5",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10032_5",
+                                "value"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                },
+                {
+                    "op": "register_write",
+                    "parameters": [
+                        {
+                            "type": "register_array",
+                            "value": "distinct_10032_5"
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10032_5",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_distinct_10032_5",
+                                "value"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "drop_10008",
+            "id": 20,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "drop_10008"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_mark_satisfied_10008",
+            "id": 21,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "satisfied_10008"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "clone"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_mark_satisfied_10032",
+            "id": 22,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "satisfied_10032"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_app_data",
+                                "clone"
+                            ]
+                        },
+                        {
+                            "type": "hexstr",
+                            "value": "0x1"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_add_out_header_10008",
+            "id": 23,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "add_header",
+                    "parameters": [
+                        {
+                            "type": "header",
+                            "value": "out_header_10008"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "out_header_10008",
+                                "qid"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "qid"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "out_header_10008",
+                                "ipv4_srcIP"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "ipv4_srcIP"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "out_header_10008",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10008_1",
+                                "index"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "do_add_out_header_10032",
+            "id": 24,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "add_header",
+                    "parameters": [
+                        {
+                            "type": "header",
+                            "value": "out_header_10032"
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "out_header_10032",
+                                "qid"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "qid"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "out_header_10032",
+                                "ipv4_srcIP"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "ipv4_srcIP"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "out_header_10032",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "index"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "set_count_reduce_10032_7",
+            "id": 25,
+            "runtime_data": [],
+            "primitives": [
+                {
+                    "op": "modify_field",
+                    "parameters": [
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_mapinit_10032_1",
+                                "index"
+                            ]
+                        },
+                        {
+                            "type": "field",
+                            "value": [
+                                "meta_reduce_10032_7",
+                                "index"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "pipelines": [
+        {
+            "name": "ingress",
+            "id": 0,
+            "init_table": "init_app_metadata",
+            "tables": [
+                {
+                    "name": "init_app_metadata",
+                    "id": 0,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_init_app_metadata"
+                    ],
+                    "next_tables": {
+                        "do_init_app_metadata": "_condition_0"
+                    },
+                    "base_default_next": "_condition_0"
+                },
+                {
+                    "name": "report_packet",
+                    "id": 1,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_report_packet"
+                    ],
+                    "next_tables": {
+                        "do_report_packet": null
+                    },
+                    "base_default_next": null
+                },
+                {
+                    "name": "mark_satisfied_10008",
+                    "id": 2,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_mark_satisfied_10008"
+                    ],
+                    "next_tables": {
+                        "do_mark_satisfied_10008": "_condition_9"
+                    },
+                    "base_default_next": "_condition_9"
+                },
+                {
+                    "name": "mapinit_10008_1",
+                    "id": 3,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_mapinit_10008_1"
+                    ],
+                    "next_tables": {
+                        "do_mapinit_10008_1": "_condition_1"
+                    },
+                    "base_default_next": "_condition_1"
+                },
+                {
+                    "name": "map_10008_2",
+                    "id": 4,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_map_10008_2"
+                    ],
+                    "next_tables": {
+                        "do_map_10008_2": "_condition_2"
+                    },
+                    "base_default_next": "_condition_2"
+                },
+                {
+                    "name": "map_10008_3",
+                    "id": 5,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_map_10008_3"
+                    ],
+                    "next_tables": {
+                        "do_map_10008_3": "_condition_3"
+                    },
+                    "base_default_next": "_condition_3"
+                },
+                {
+                    "name": "update_distinct_10008_4",
+                    "id": 6,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_update_distinct_10008_4"
+                    ],
+                    "next_tables": {
+                        "do_update_distinct_10008_4": "_condition_5"
+                    },
+                    "base_default_next": "_condition_5"
+                },
+                {
+                    "name": "init_distinct_10008_4",
+                    "id": 7,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_init_distinct_10008_4"
+                    ],
+                    "next_tables": {
+                        "do_init_distinct_10008_4": "_condition_4"
+                    },
+                    "base_default_next": "_condition_4"
+                },
+                {
+                    "name": "pass_distinct_10008_4",
+                    "id": 8,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "_nop"
+                    ],
+                    "next_tables": {
+                        "_nop": "update_distinct_10008_4"
+                    },
+                    "base_default_next": "update_distinct_10008_4"
+                },
+                {
+                    "name": "drop_distinct_10008_4",
+                    "id": 9,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "drop_10008"
+                    ],
+                    "next_tables": {
+                        "drop_10008": "_condition_5"
+                    },
+                    "base_default_next": "_condition_5"
+                },
+                {
+                    "name": "map_10008_5",
+                    "id": 10,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_map_10008_5"
+                    ],
+                    "next_tables": {
+                        "do_map_10008_5": "_condition_6"
+                    },
+                    "base_default_next": "_condition_6"
+                },
+                {
+                    "name": "init_reduce_10008_6",
+                    "id": 11,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_init_reduce_10008_6"
+                    ],
+                    "next_tables": {
+                        "do_init_reduce_10008_6": "_condition_7"
+                    },
+                    "base_default_next": "_condition_7"
+                },
+                {
+                    "name": "first_pass_reduce_10008_6",
+                    "id": 12,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "set_count_reduce_10008_6"
+                    ],
+                    "next_tables": {
+                        "set_count_reduce_10008_6": "_condition_8"
+                    },
+                    "base_default_next": "_condition_8"
+                },
+                {
+                    "name": "drop_reduce_10008_6",
+                    "id": 13,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "drop_10008"
+                    ],
+                    "next_tables": {
+                        "drop_10008": "_condition_8"
+                    },
+                    "base_default_next": "_condition_8"
+                },
+                {
+                    "name": "mark_satisfied_10032",
+                    "id": 14,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_mark_satisfied_10032"
+                    ],
+                    "next_tables": {
+                        "do_mark_satisfied_10032": "_condition_19"
+                    },
+                    "base_default_next": "_condition_19"
+                },
+                {
+                    "name": "mapinit_10032_1",
+                    "id": 15,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_mapinit_10032_1"
+                    ],
+                    "next_tables": {
+                        "do_mapinit_10032_1": "_condition_10"
+                    },
+                    "base_default_next": "_condition_10"
+                },
+                {
+                    "name": "filter_10032_2",
+                    "id": 16,
+                    "match_type": "lpm",
+                    "type": "simple",
+                    "max_size": 64,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [
+                        {
+                            "match_type": "lpm",
+                            "target": [
+                                "ipv4",
+                                "srcIP"
+                            ],
+                            "mask": null
+                        }
+                    ],
+                    "actions": [
+                        "drop_10032",
+                        "_nop"
+                    ],
+                    "next_tables": {
+                        "drop_10032": "_condition_11",
+                        "_nop": "_condition_11"
+                    },
+                    "base_default_next": "_condition_11"
+                },
+                {
+                    "name": "map_10032_3",
+                    "id": 17,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_map_10032_3"
+                    ],
+                    "next_tables": {
+                        "do_map_10032_3": "_condition_12"
+                    },
+                    "base_default_next": "_condition_12"
+                },
+                {
+                    "name": "map_10032_4",
+                    "id": 18,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_map_10032_4"
+                    ],
+                    "next_tables": {
+                        "do_map_10032_4": "_condition_13"
+                    },
+                    "base_default_next": "_condition_13"
+                },
+                {
+                    "name": "update_distinct_10032_5",
+                    "id": 19,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_update_distinct_10032_5"
+                    ],
+                    "next_tables": {
+                        "do_update_distinct_10032_5": "_condition_15"
+                    },
+                    "base_default_next": "_condition_15"
+                },
+                {
+                    "name": "init_distinct_10032_5",
+                    "id": 20,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_init_distinct_10032_5"
+                    ],
+                    "next_tables": {
+                        "do_init_distinct_10032_5": "_condition_14"
+                    },
+                    "base_default_next": "_condition_14"
+                },
+                {
+                    "name": "pass_distinct_10032_5",
+                    "id": 21,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "_nop"
+                    ],
+                    "next_tables": {
+                        "_nop": "update_distinct_10032_5"
+                    },
+                    "base_default_next": "update_distinct_10032_5"
+                },
+                {
+                    "name": "drop_distinct_10032_5",
+                    "id": 22,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "drop_10032"
+                    ],
+                    "next_tables": {
+                        "drop_10032": "_condition_15"
+                    },
+                    "base_default_next": "_condition_15"
+                },
+                {
+                    "name": "map_10032_6",
+                    "id": 23,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_map_10032_6"
+                    ],
+                    "next_tables": {
+                        "do_map_10032_6": "_condition_16"
+                    },
+                    "base_default_next": "_condition_16"
+                },
+                {
+                    "name": "init_reduce_10032_7",
+                    "id": 24,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_init_reduce_10032_7"
+                    ],
+                    "next_tables": {
+                        "do_init_reduce_10032_7": "_condition_17"
+                    },
+                    "base_default_next": "_condition_17"
+                },
+                {
+                    "name": "first_pass_reduce_10032_7",
+                    "id": 25,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "set_count_reduce_10032_7"
+                    ],
+                    "next_tables": {
+                        "set_count_reduce_10032_7": "_condition_18"
+                    },
+                    "base_default_next": "_condition_18"
+                },
+                {
+                    "name": "drop_reduce_10032_7",
+                    "id": 26,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "drop_10032"
+                    ],
+                    "next_tables": {
+                        "drop_10032": "_condition_18"
+                    },
+                    "base_default_next": "_condition_18"
+                }
+            ],
+            "action_profiles": [],
+            "conditionals": [
+                {
+                    "name": "_condition_0",
+                    "id": 0,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10008"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "mapinit_10008_1",
+                    "false_next": "_condition_9"
+                },
+                {
+                    "name": "_condition_1",
+                    "id": 1,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10008"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "map_10008_2",
+                    "false_next": "_condition_9"
+                },
+                {
+                    "name": "_condition_2",
+                    "id": 2,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10008"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "map_10008_3",
+                    "false_next": "_condition_9"
+                },
+                {
+                    "name": "_condition_3",
+                    "id": 3,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10008"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "init_distinct_10008_4",
+                    "false_next": "_condition_9"
+                },
+                {
+                    "name": "_condition_4",
+                    "id": 4,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "<=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_distinct_10008_4",
+                                    "value"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x0"
+                            }
+                        }
+                    },
+                    "true_next": "pass_distinct_10008_4",
+                    "false_next": "drop_distinct_10008_4"
+                },
+                {
+                    "name": "_condition_5",
+                    "id": 5,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10008"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "map_10008_5",
+                    "false_next": "_condition_9"
+                },
+                {
+                    "name": "_condition_6",
+                    "id": 6,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10008"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "init_reduce_10008_6",
+                    "false_next": "_condition_9"
+                },
+                {
+                    "name": "_condition_7",
+                    "id": 7,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "==",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_reduce_10008_6",
+                                    "value"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "first_pass_reduce_10008_6",
+                    "false_next": "drop_reduce_10008_6"
+                },
+                {
+                    "name": "_condition_8",
+                    "id": 8,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10008"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "mark_satisfied_10008",
+                    "false_next": "_condition_9"
+                },
+                {
+                    "name": "_condition_9",
+                    "id": 9,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "mapinit_10032_1",
+                    "false_next": "_condition_19"
+                },
+                {
+                    "name": "_condition_10",
+                    "id": 10,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "filter_10032_2",
+                    "false_next": "_condition_19"
+                },
+                {
+                    "name": "_condition_11",
+                    "id": 11,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "map_10032_3",
+                    "false_next": "_condition_19"
+                },
+                {
+                    "name": "_condition_12",
+                    "id": 12,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "map_10032_4",
+                    "false_next": "_condition_19"
+                },
+                {
+                    "name": "_condition_13",
+                    "id": 13,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "init_distinct_10032_5",
+                    "false_next": "_condition_19"
+                },
+                {
+                    "name": "_condition_14",
+                    "id": 14,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "<=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_distinct_10032_5",
+                                    "value"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x0"
+                            }
+                        }
+                    },
+                    "true_next": "pass_distinct_10032_5",
+                    "false_next": "drop_distinct_10032_5"
+                },
+                {
+                    "name": "_condition_15",
+                    "id": 15,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "map_10032_6",
+                    "false_next": "_condition_19"
+                },
+                {
+                    "name": "_condition_16",
+                    "id": 16,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "init_reduce_10032_7",
+                    "false_next": "_condition_19"
+                },
+                {
+                    "name": "_condition_17",
+                    "id": 17,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "==",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_reduce_10032_7",
+                                    "value"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "first_pass_reduce_10032_7",
+                    "false_next": "drop_reduce_10032_7"
+                },
+                {
+                    "name": "_condition_18",
+                    "id": 18,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "!=",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "drop_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "mark_satisfied_10032",
+                    "false_next": "_condition_19"
+                },
+                {
+                    "name": "_condition_19",
+                    "id": 19,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "==",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "clone"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "report_packet",
+                    "false_next": null
+                }
+            ]
+        },
+        {
+            "name": "egress",
+            "id": 1,
+            "init_table": "_condition_20",
+            "tables": [
+                {
+                    "name": "add_final_header",
+                    "id": 27,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_add_final_header"
+                    ],
+                    "next_tables": {
+                        "do_add_final_header": null
+                    },
+                    "base_default_next": null
+                },
+                {
+                    "name": "add_out_header_10008",
+                    "id": 28,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_add_out_header_10008"
+                    ],
+                    "next_tables": {
+                        "do_add_out_header_10008": "_condition_23"
+                    },
+                    "base_default_next": "_condition_23"
+                },
+                {
+                    "name": "add_out_header_10032",
+                    "id": 29,
+                    "match_type": "exact",
+                    "type": "simple",
+                    "max_size": 1,
+                    "with_counters": false,
+                    "direct_meters": null,
+                    "support_timeout": false,
+                    "key": [],
+                    "actions": [
+                        "do_add_out_header_10032"
+                    ],
+                    "next_tables": {
+                        "do_add_out_header_10032": "add_final_header"
+                    },
+                    "base_default_next": "add_final_header"
+                }
+            ],
+            "action_profiles": [],
+            "conditionals": [
+                {
+                    "name": "_condition_20",
+                    "id": 20,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "==",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "standard_metadata",
+                                    "instance_type"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x0"
+                            }
+                        }
+                    },
+                    "true_next": null,
+                    "false_next": "_condition_21"
+                },
+                {
+                    "name": "_condition_21",
+                    "id": 21,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "==",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "standard_metadata",
+                                    "instance_type"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "_condition_22",
+                    "false_next": null
+                },
+                {
+                    "name": "_condition_22",
+                    "id": 22,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "==",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "satisfied_10008"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "add_out_header_10008",
+                    "false_next": "_condition_23"
+                },
+                {
+                    "name": "_condition_23",
+                    "id": 23,
+                    "expression": {
+                        "type": "expression",
+                        "value": {
+                            "op": "==",
+                            "left": {
+                                "type": "field",
+                                "value": [
+                                    "meta_app_data",
+                                    "satisfied_10032"
+                                ]
+                            },
+                            "right": {
+                                "type": "hexstr",
+                                "value": "0x1"
+                            }
+                        }
+                    },
+                    "true_next": "add_out_header_10032",
+                    "false_next": "add_final_header"
+                }
+            ]
+        }
+    ],
+    "calculations": [
+        {
+            "name": "hash_distinct_10008_4",
+            "id": 0,
+            "input": [
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10008_1",
+                        "ipv4_srcIP"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10008_1",
+                        "tcp_dport"
+                    ]
+                }
+            ],
+            "algo": "crc16"
+        },
+        {
+            "name": "hash_reduce_10008_6",
+            "id": 1,
+            "input": [
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10008_1",
+                        "ipv4_srcIP"
+                    ]
+                }
+            ],
+            "algo": "crc16"
+        },
+        {
+            "name": "hash_distinct_10032_5",
+            "id": 2,
+            "input": [
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10032_1",
+                        "ipv4_srcIP"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10032_1",
+                        "tcp_dport"
+                    ]
+                }
+            ],
+            "algo": "crc16"
+        },
+        {
+            "name": "hash_reduce_10032_7",
+            "id": 3,
+            "input": [
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10032_1",
+                        "ipv4_srcIP"
+                    ]
+                }
+            ],
+            "algo": "crc16"
+        }
+    ],
+    "checksums": [],
+    "learn_lists": [],
+    "field_lists": [
+        {
+            "id": 1,
+            "name": "report_packet_fields",
+            "elements": [
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_app_data",
+                        "drop_10008"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_app_data",
+                        "satisfied_10008"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_app_data",
+                        "drop_10032"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_app_data",
+                        "satisfied_10032"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_app_data",
+                        "clone"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_app_data",
+                        "_padding"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10008_1",
+                        "qid"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10008_1",
+                        "count"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10008_1",
+                        "tcp_dport"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10008_1",
+                        "ipv4_srcIP"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10008_1",
+                        "index"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10032_1",
+                        "qid"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10032_1",
+                        "count"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10032_1",
+                        "tcp_dport"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10032_1",
+                        "ipv4_srcIP"
+                    ]
+                },
+                {
+                    "type": "field",
+                    "value": [
+                        "meta_mapinit_10032_1",
+                        "index"
+                    ]
+                }
+            ]
+        }
+    ],
+    "counter_arrays": [],
+    "register_arrays": [
+        {
+            "name": "distinct_10008_4",
+            "id": 0,
+            "bitwidth": 32,
+            "size": 65536
+        },
+        {
+            "name": "reduce_10008_6",
+            "id": 1,
+            "bitwidth": 32,
+            "size": 65536
+        },
+        {
+            "name": "distinct_10032_5",
+            "id": 2,
+            "bitwidth": 32,
+            "size": 65536
+        },
+        {
+            "name": "reduce_10032_7",
+            "id": 3,
+            "bitwidth": 32,
+            "size": 65536
+        }
+    ],
+    "force_arith": [
+        [
+            "standard_metadata",
+            "ingress_port"
+        ],
+        [
+            "standard_metadata",
+            "packet_length"
+        ],
+        [
+            "standard_metadata",
+            "egress_spec"
+        ],
+        [
+            "standard_metadata",
+            "egress_port"
+        ],
+        [
+            "standard_metadata",
+            "egress_instance"
+        ],
+        [
+            "standard_metadata",
+            "instance_type"
+        ],
+        [
+            "standard_metadata",
+            "clone_spec"
+        ],
+        [
+            "standard_metadata",
+            "_padding"
+        ]
+    ]
+}
