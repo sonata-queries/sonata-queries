@@ -3,7 +3,7 @@
 
 | Program Name  | Description|
 | ------------- | ------------- |
-| New Open Conn | for which the number of newly opened TCP connections exceeds threshold.|
+| TCP New Conn | for which the number of newly opened TCP connections exceeds threshold.|
 | SSH Brute     | that receive similar-sized packets from more than threshold unique senders.|
 | SuperSpreader | that contact more than threshold unique destinations.|
 | Port Scan     | that send traffic over more than threshold destination ports.|
